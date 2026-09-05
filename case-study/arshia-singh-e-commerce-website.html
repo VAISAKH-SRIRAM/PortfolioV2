@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAISAKH SRIRAM - PRTFLIO</title>
+  <meta name="author" content="Vaisakh Sriram">
+  <meta name="description" content="Vaisakh Sriram is a Software Developer & Graphic Designer based in Palakkad, Kerala, with a passion for turning ideas into bold, functional, and visually striking digital experiences. Alongside his full-time work, he freelances across software development, web design, UI/UX, and graphic design — blending technology and creativity to build products that don’t just work, but make an impression. From developing high-performance software and crafting modern websites to designing intuitive interfaces and distinctive visual identities, he works across the entire digital spectrum. His work combines clean engineering, thoughtful design, and a strong eye for detail to create experiences that feel as good as they look. He has designed and developed digital products and creative solutions for clients and organizations including Arshia Singh, River Promenade, and others.">
+  <meta property="og:site_name" content="VAISAKH SRIRAM">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fafafa;
+      color: #111212;
+      margin: 0;
+      padding: 0;
+    }
+    .cs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e2e2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .cs-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #111212;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+    .cs-back-btn:hover { color: #0066cc; }
+    .cs-visit-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111212;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cs-visit-btn:hover {
+      background: #0066cc;
+      transform: translateY(-2px);
+    }
+    .cs-hero {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .cs-tag {
+      display: inline-block;
+      background: #eeeeee;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #555;
+    }
+    .cs-title {
+      font-size: 42px;
+      font-weight: 800;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+    .cs-tagline {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .cs-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #e2e2e2;
+      margin-bottom: 40px;
+    }
+    .cs-meta-item label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .cs-meta-item span {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+    }
+    .cs-cover-wrapper {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      border: 1px solid #e2e2e2;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+    .cs-cover-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cs-section {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid #e2e2e2;
+      margin-bottom: 32px;
+    }
+    .cs-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .cs-section p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+    .cs-list {
+      padding-left: 20px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .cs-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .cs-stat-card {
+      background: #f8f9fa;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #eaeaea;
+      text-align: center;
+    }
+    .cs-stat-num {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0066cc;
+      margin-bottom: 8px;
+    }
+    .cs-stat-label {
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+    .cs-footer-cta {
+      text-align: center;
+      padding: 60px 20px;
+      background: #ffffff;
+      border-top: 1px solid #e2e2e2;
+      margin-top: 60px;
+    }
+    .cs-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #0066cc;
+      color: #ffffff;
+      padding: 16px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cs-cta-btn:hover {
+      background: #004fb3;
+      transform: translateY(-3px);
+    }
+  </style>
+<title>VAISAKH SRIRAM - PRTFLIO</title>
+<meta name="description" content="Vaisakh Sriram is a Software Developer & Graphic Designer based in Palakkad, Kerala, with a passion for turning ideas into bold, functional, and visually striking digital experiences. Alongside his full-time work, he freelances across software development, web design, UI/UX, and graphic design — blending technology and creativity to build products that don’t just work, but make an impression. From developing high-performance software and crafting modern websites to designing intuitive interfaces and distinctive visual identities, he works across the entire digital spectrum. His work combines clean engineering, thoughtful design, and a strong eye for detail to create experiences that feel as good as they look. He has designed and developed digital products and creative solutions for clients and organizations including Arshia Singh, River Promenade, and others.">
+<meta name="author" content="Vaisakh Sriram">
+<meta name="keywords" content="Vaisakh Sriram, Software Developer, Web Designer, Portfolio, Palakkad, Kerala, Arshia Singh E-Commerce, RiverPromenade Resort, Eden John Caterers, Pura Pac Eco">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VAISAKH SRIRAM - PRTFLIO">
+<meta property="og:title" content="VAISAKH SRIRAM - PRTFLIO">
+<meta property="og:description" content="Vaisakh Sriram is a Software Developer & Graphic Designer based in Palakkad, Kerala, with a passion for turning ideas into bold, functional, and visually striking digital experiences. Alongside his full-time work, he freelances across software development, web design, UI/UX, and graphic design — blending technology and creativity to build products that don’t just work, but make an impression. From developing high-performance software and crafting modern websites to designing intuitive interfaces and distinctive visual identities, he works across the entire digital spectrum. His work combines clean engineering, thoughtful design, and a strong eye for detail to create experiences that feel as good as they look. He has designed and developed digital products and creative solutions for clients and organizations including Arshia Singh, River Promenade, and others.">
+<meta property="og:author" content="Vaisakh Sriram">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VAISAKH SRIRAM - PRTFLIO">
+<meta name="twitter:description" content="Vaisakh Sriram is a Software Developer & Graphic Designer based in Palakkad, Kerala, with a passion for turning ideas into bold, functional, and visually striking digital experiences. Alongside his full-time work, he freelances across software development, web design, UI/UX, and graphic design — blending technology and creativity to build products that don’t just work, but make an impression. From developing high-performance software and crafting modern websites to designing intuitive interfaces and distinctive visual identities, he works across the entire digital spectrum. His work combines clean engineering, thoughtful design, and a strong eye for detail to create experiences that feel as good as they look. He has designed and developed digital products and creative solutions for clients and organizations including Arshia Singh, River Promenade, and others.">
+<meta name="twitter:creator" content="@_vaisakhsriram">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vaisakh Sriram",
+  "jobTitle": "Software Developer & Graphic Designer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Palakkad",
+    "addressRegion": "Kerala",
+    "addressCountry": "India"
+  },
+  "email": "mailto:vaisakhs2255@gmail.com",
+  "telephone": "+918848932653",
+  "sameAs": [
+    "https://www.instagram.com/_vaisakhsriram?igsh=OGc3YjNiOGU1d252"
+  ]
+}
+</script>
+            <link rel="icon" type="image/gif" href="/favicon.gif?v=2">
+    <link rel="shortcut icon" type="image/gif" href="/favicon.gif?v=2">
+    <link rel="apple-touch-icon" href="/favicon.gif?v=2">
+  <script src="/js/favicon-animator.js"></script>
+</head>
+<body>
+
+  <header class="cs-header">
+    <a href="/case-study/" class="cs-back-btn">← Back to Projects</a>
+    <a href="https://arshiasinghofficial.com" target="_blank" rel="noopener noreferrer" class="cs-visit-btn">Visit Live Website ↗</a>
+  </header>
+
+  <main class="cs-hero">
+    <span class="cs-tag">E-Commerce & Luxury Fashion</span>
+    <h1 class="cs-title">Arshia Singh E-Commerce</h1>
+    <p class="cs-tagline">High-conversion bespoke e-commerce platform built for high-end fashion and couture apparel with sub-second catalog rendering.</p>
+
+    <div class="cs-meta-grid">
+      <div class="cs-meta-item">
+        <label>Client</label>
+        <span>Full-Stack Software Development</span>
+      </div>
+      <div class="cs-meta-item">
+        <label>Role</label>
+        <span>UX/UI Design & Full-Stack Development</span>
+      </div>
+      <div class="cs-meta-item">
+        <label>Date</label>
+        <span>March 19, 2026</span>
+      </div>
+      <div class="cs-meta-item">
+        <label>Live URL</label>
+        <span><a href="https://arshiasinghofficial.com" target="_blank" rel="noopener noreferrer" style="color:#0066cc;">arshiasinghofficial.com</a></span>
+      </div>
+    </div>
+
+    <div class="cs-cover-wrapper">
+      <img src="/arshia-singh-logo.png" alt="Software Developer" class="cs-cover-img" style="background:#ffffff;padding:40px;box-sizing:border-box;max-height:450px;object-fit:contain;">
+    </div>
+
+    <section class="cs-section">
+      <h2>Project Overview</h2>
+      <p>Full-Stack Software Development is a premier luxury fashion brand requiring a digital store that mirrors the elegance of haute couture. The goal was to build a fluid, ultra-fast online shopping experience with interactive lookbooks, mobile-first micro-interactions, and frictionless checkout.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>Key Challenges</h2>
+      <ul class="cs-list">
+        <li>Heavy high-resolution image catalogs causing slow mobile page loads.</li>
+<li>Complex product variant selectors for custom size and color combinations.</li>
+<li>Integrating multi-currency payments and real-time inventory management.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>Technical & Design Solutions</h2>
+      <ul class="cs-list">
+        <li>Implemented next-gen image compression with responsive srcset loading for sub-second rendering.</li>
+<li>Designed a custom floating size-recommender drawer with smooth animations.</li>
+<li>Engineered a streamlined 2-step checkout flow with multi-currency dynamic conversion.</li>
+      </ul>
+    </section>
+
+    <section class="cs-section">
+      <h2>Results & Impact</h2>
+      <div class="cs-stats-grid">
+        <div class="cs-stat-card"><div class="cs-stat-num">+42%</div><div class="cs-stat-label">Conversion Rate Increase</div></div>
+<div class="cs-stat-card"><div class="cs-stat-num">< 0.9s</div><div class="cs-stat-label">Largest Contentful Paint</div></div>
+<div class="cs-stat-card"><div class="cs-stat-num">+85%</div><div class="cs-stat-label">Mobile Engagement</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cs-footer-cta">
+    <h2>Want to explore the live build?</h2>
+    <p style="color:#666; margin-bottom: 24px;">Experience the interactive website live in production.</p>
+    <a href="https://arshiasinghofficial.com" target="_blank" rel="noopener noreferrer" class="cs-cta-btn">VISIT LIVE WEBSITE ↗</a>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

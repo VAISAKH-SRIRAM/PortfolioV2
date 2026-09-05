@@ -1,0 +1,30 @@
+# Robots.txt for Vaisakh Sriram Portfolio
+User-agent: *
+Allow: /
+
+# Allow Search Engines & AI Assistants
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://vaisakhsriram.com/sitemap.xml
+
+# AI Agent Knowledge Files
+# https://llmstxt.org/
+User-agent: *
+Allow: /llms.txt
+Allow: /llms-full.txt
