@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════════
    VAISAKH SRIRAM PORTFOLIO — Digital Portfolio & Interactive Logic
-   Pure Light Theme · Crisp Canvas · Exact Typography & Motion
 ══════════════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 
 /* ──────────────────────────────────────────
    HIDE BUY BADGE & TEMPLATE BADGE CONTAINER
@@ -272,17 +272,32 @@ img, svg { display: block; }
   background: #ddd;
 }
 
-.ruler-clock-center {
-  position: absolute;
-  top: calc(var(--nav-h) + var(--ruler-h) + 12px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--f-mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #333;
-  z-index: 100;
+.ruler-clock-center,
+.framer-1x2dk32,
+[data-framer-name="Time"] {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
 }
+
+#rulerClock,
+.framer-1x2dk32 *,
+[data-framer-name="Time"] * {
+  font-family: "DM Mono", monospace !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 120% !important;
+  color: rgb(17, 18, 18) !important;
+  white-space: nowrap !important;
+}
+
 
 /* ──────────────────────────────────────────
    PAGE SYSTEM

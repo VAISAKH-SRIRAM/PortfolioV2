@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRouter();
   initXrayHoverEffect();
   initContactForm();
+  initPlaygroundCanvas();
   cleanupUI();
   setTimeout(cleanupUI, 300);
 });
@@ -231,7 +232,7 @@ function initRulerTicks() {
 
 window.addEventListener("resize", initRulerTicks);
 
-/* Update live clock every second (IST Live Time) */
+/* Update live clock every second (IST Live Time with exact DM Mono styling) */
 function initLiveClock() {
   function update() {
     const now = new Date();
@@ -244,17 +245,145 @@ function initLiveClock() {
     });
 
     const clockEl = document.getElementById("rulerClock");
-    if (clockEl) clockEl.textContent = timeStr;
+    if (clockEl) {
+      clockEl.textContent = timeStr;
+    }
 
     const framerTimeEls = document.querySelectorAll('.framer-1x2dk32, [data-framer-name="Time"]');
     framerTimeEls.forEach(container => {
       const textNode = container.querySelector('.framer-1frrjid-container div, div') || container;
-      if (textNode) textNode.textContent = timeStr;
+      if (textNode) {
+        textNode.textContent = timeStr;
+      }
     });
   }
   update();
   setInterval(update, 1000);
 }
+
+/* Interactive Drag & Pan for Playground Canvas */
+function initPlaygroundCanvas() {
+  const canvasContainer = document.querySelector('.framer-42pi2o-container');
+  if (!canvasContainer) return;
+
+  const canvasWrapper = canvasContainer.querySelector('div[style*="height"]') || canvasContainer.firstElementChild;
+  const canvasInner = canvasWrapper ? canvasWrapper.firstElementChild : null;
+  const itemBoxes = canvasContainer.querySelectorAll('[data-image="true"]');
+
+  if (!canvasWrapper || !canvasInner) return;
+
+  let isPanning = false;
+  let startX = 0, startY = 0;
+  let panX = 0, panY = 0;
+
+  // Stop click propagation on canvas to prevent any unexpected navigation
+  canvasContainer.addEventListener('click', (e) => {
+    e.stopPropagation();
+  }, true);
+
+  // Background Pan functionality
+  canvasWrapper.addEventListener('mousedown', (e) => {
+    if (e.target.closest('[data-image="true"]')) return;
+    isPanning = true;
+    startX = e.clientX - panX;
+    startY = e.clientY - panY;
+    canvasWrapper.style.cursor = 'grabbing';
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isPanning) return;
+    panX = e.clientX - startX;
+    panY = e.clientY - startY;
+    canvasInner.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px))`;
+    e.preventDefault();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isPanning) {
+      isPanning = false;
+      canvasWrapper.style.cursor = 'grab';
+    }
+  });
+
+  // Touch pan support
+  canvasWrapper.addEventListener('touchstart', (e) => {
+    if (e.target.closest('[data-image="true"]')) return;
+    if (e.touches.length === 1) {
+      isPanning = true;
+      startX = e.touches[0].clientX - panX;
+      startY = e.touches[0].clientY - panY;
+      e.stopPropagation();
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isPanning || e.touches.length !== 1) return;
+    panX = e.touches[0].clientX - startX;
+    panY = e.touches[0].clientY - startY;
+    canvasInner.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px))`;
+  }, { passive: false });
+
+  window.addEventListener('touchend', () => {
+    isPanning = false;
+  });
+
+  // Individual image drag functionality
+  itemBoxes.forEach(item => {
+    let isDraggingItem = false;
+    let itemStartX = 0, itemStartY = 0;
+    let itemPosX = 0, itemPosY = 0;
+
+    item.addEventListener('mousedown', (e) => {
+      isDraggingItem = true;
+      itemStartX = e.clientX - itemPosX;
+      itemStartY = e.clientY - itemPosY;
+      item.style.cursor = 'grabbing';
+      item.style.zIndex = '999';
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingItem) return;
+      itemPosX = e.clientX - itemStartX;
+      itemPosY = e.clientY - itemStartY;
+      item.style.transform = `translate(${itemPosX}px, ${itemPosY}px)`;
+      e.preventDefault();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDraggingItem) {
+        isDraggingItem = false;
+        item.style.cursor = 'grab';
+      }
+    });
+
+    // Touch support for images
+    item.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDraggingItem = true;
+        itemStartX = e.touches[0].clientX - itemPosX;
+        itemStartY = e.touches[0].clientY - itemPosY;
+        item.style.zIndex = '999';
+        e.stopPropagation();
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDraggingItem || e.touches.length !== 1) return;
+      itemPosX = e.touches[0].clientX - itemStartX;
+      itemPosY = e.touches[0].clientY - itemStartY;
+      item.style.transform = `translate(${itemPosX}px, ${itemPosY}px)`;
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      isDraggingItem = false;
+    });
+  });
+}
+
 
 /* INTERACTIVE X-RAY HOVER EFFECT ON VAISAKH */
 function initXrayHoverEffect() {
