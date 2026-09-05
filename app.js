@@ -231,20 +231,26 @@ function initRulerTicks() {
 
 window.addEventListener("resize", initRulerTicks);
 
-/* Update live clock every second */
+/* Update live clock every second (IST Live Time) */
 function initLiveClock() {
-  const clockEl = document.getElementById("rulerClock");
-  if (!clockEl) return;
-
   function update() {
     const now = new Date();
     const timeStr = now.toLocaleTimeString("en-US", {
-      hour: "2-digit",
+      timeZone: "Asia/Kolkata",
+      hour: "numeric",
       minute: "2-digit",
       second: "2-digit",
       hour12: true
     });
-    clockEl.textContent = timeStr;
+
+    const clockEl = document.getElementById("rulerClock");
+    if (clockEl) clockEl.textContent = timeStr;
+
+    const framerTimeEls = document.querySelectorAll('.framer-1x2dk32, [data-framer-name="Time"]');
+    framerTimeEls.forEach(container => {
+      const textNode = container.querySelector('.framer-1frrjid-container div, div') || container;
+      if (textNode) textNode.textContent = timeStr;
+    });
   }
   update();
   setInterval(update, 1000);
