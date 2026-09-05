@@ -234,6 +234,13 @@ window.addEventListener("resize", initRulerTicks);
 
 /* Update live clock every second (IST Live Time with exact DM Mono styling) */
 function initLiveClock() {
+  let clockEl = document.getElementById("rulerClock");
+  if (!clockEl) {
+    clockEl = document.createElement("div");
+    clockEl.id = "rulerClock";
+    document.body.appendChild(clockEl);
+  }
+
   function update() {
     const now = new Date();
     const timeStr = now.toLocaleTimeString("en-US", {
@@ -244,7 +251,6 @@ function initLiveClock() {
       hour12: true
     });
 
-    const clockEl = document.getElementById("rulerClock");
     if (clockEl) {
       clockEl.textContent = timeStr;
     }
